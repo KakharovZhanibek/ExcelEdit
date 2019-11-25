@@ -1,0 +1,26 @@
+﻿<Window x:Class="Excel_.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Excel_"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <TextBox x:Name="tbxExcelPath" Margin="20,10" HorizontalAlignment="Left" Width="300" Text="C:\Users\Zhanibek\Desktop\test.xlsx"></TextBox>
+        <Button Margin="20,10" HorizontalAlignment="Left" Height="25" Content="Открыть Excel файл" Click="OpenExcel"></Button>
+
+        <ListView x:Name="lvExcel" Margin="20" Opacity="0.9">
+            <ListView.View>
+                <GridView x:Name="gvExcel">
+                    <GridView.Columns>
+                        <GridViewColumn Header="ID" ></GridViewColumn>
+                        <GridViewColumn Header="Name" ></GridViewColumn>
+                        <GridViewColumn Header="Age" ></GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </StackPanel>
+</Window>
