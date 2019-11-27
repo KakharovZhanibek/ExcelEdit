@@ -8,19 +8,15 @@
         Title="MainWindow" Height="450" Width="800">
     <StackPanel>
         <TextBox x:Name="tbxExcelPath" Margin="20,10" HorizontalAlignment="Left" Width="300" Text="C:\Users\Zhanibek\Desktop\test.xlsx"></TextBox>
-        <Button Margin="20,10" HorizontalAlignment="Left" Height="25" Content="Открыть Excel файл" Click="OpenExcel"></Button>
+        <WrapPanel>
+            <Button Margin="20,10" HorizontalAlignment="Left" Height="25" Content="Открыть Excel файл" Click="OpenExcel"></Button>
+            <Button x:Name="Edit_Btn"  Margin="20,10" HorizontalAlignment="Left" Height="25" Content="Редактировать" Click="Edit" Visibility="Hidden"></Button>
+        </WrapPanel>
 
-        <ListView x:Name="lvExcel" Margin="20" Opacity="0.9">
-            <ListView.View>
-                <GridView x:Name="gvExcel">
-                    <GridView.Columns>
-                        <GridViewColumn Header="ID" ></GridViewColumn>
-                        <GridViewColumn Header="Name" ></GridViewColumn>
-                        <GridViewColumn Header="Age" ></GridViewColumn>
-                    </GridView.Columns>
-                </GridView>
-            </ListView.View>
-        </ListView>
-
+        <DataGrid x:Name="dataGrid" Visibility="Hidden" 
+                  Margin="20" IsReadOnly="True" 
+                  ItemsSource="{Binding}" CellEditEnding="DataGrid_CellEditEnding">
+        </DataGrid>
+        <Grid
     </StackPanel>
 </Window>

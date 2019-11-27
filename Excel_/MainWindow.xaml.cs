@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.OleDb;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -31,16 +33,28 @@ namespace Excel_
         private void OpenExcel(object sender, RoutedEventArgs e)
         {
             FileInfo file = new FileInfo(tbxExcelPath.Text);
-            if ((tbxExcelPath.Text.EndsWith(".xlsx") || tbxExcelPath.Text.EndsWith(".xls")) && file.Exists==true)
+            if ((tbxExcelPath.Text.EndsWith(".xlsx") || tbxExcelPath.Text.EndsWith(".xls")) && file.Exists == true)
             {
                 ExcelPackage package = new ExcelPackage(file);
                 DataTable dt = ExcelPackageExtension.ToDataTable(package);
-                lvExcel.DataContext = dt;
+                dataGrid.DataContext = dt.DefaultView;
+                dataGrid.Visibility = Visibility.Visible;
+                Edit_Btn.Visibility = Visibility.Visible;
             }
             else
             {
                 MessageBox.Show("Файл не найден");
             }
+        }
+        private void Edit(object sender, RoutedEventArgs e)
+        {
+            dataGrid.IsReadOnly = false;
+        }
+
+        private void DataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            DataGrid tempDt = (DataGrid)sender;
+           
         }
     }
 }
